@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Gtt.CodeWorks" Version="0.0.84" />
+    <PackageReference Include="Gtt.CodeWorks.JWT" Version="0.0.70" />
+    <PackageReference Include="Gtt.CodeWorks.Serializers.TextJson" Version="0.0.71" />
+    <PackageReference Include="Gtt.CodeWorks.StateMachines.AzureStorage" Version="0.0.83" />
+    <PackageReference Include="Gtt.CodeWorks.Tokenizer" Version="0.0.72" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Gtt.Links.Core\Gtt.Links.Core.csproj" />
+  </ItemGroup>
+
+</Project>

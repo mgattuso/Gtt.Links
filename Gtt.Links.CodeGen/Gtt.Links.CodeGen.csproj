@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Gtt.CodeWorks" Version="0.0.84" />
+    <PackageReference Include="Gtt.CodeWorks.Duplicator" Version="0.0.71" />
+    <PackageReference Include="Gtt.CodeWorks.Serializers.TextJson" Version="0.0.71" />
+    <PackageReference Include="Microsoft.CodeAnalysis" Version="3.8.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Gtt.Links.Core\Gtt.Links.Core.csproj" />
+    <ProjectReference Include="..\Gtt.Links.Wiring\Gtt.Links.Wiring.csproj" />
+  </ItemGroup>
+
+</Project>

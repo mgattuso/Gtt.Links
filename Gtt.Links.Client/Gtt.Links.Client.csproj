@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <lang>preview</lang>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+    <Version>0.0.1</Version>
+    <Authors>Michael Gattuso</Authors>
+    <Company>gtt.me</Company>
+    <Product>Gtt.Links.Client</Product>
+    <Description>Links Functions</Description>
+    <Copyright>2021, Michael Gattuso</Copyright>
+    <PackageProjectUrl>https://github.com/mgattuso/Gtt.Links.Core</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/mgattuso/Gtt.Links.Core</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <AssemblyVersion>0.0.1.0</AssemblyVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Gtt.CodeWorks" Version="0.0.84" />
+    <PackageReference Include="Gtt.CodeWorks.StateMachines" Version="0.0.80" />
+    <PackageReference Include="Gtt.CodeWorks.Serializers.TextJson" Version="0.0.71" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!--<None Include=".\bin\$(Configuration)\$(TargetFramework)\Gtt.Links.Shared.dll" Pack="True" PackagePath="lib\$(TargetFramework)" />-->
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Gtt.Links.CodeGen\Gtt.Links.CodeGen.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+    <ProjectReference Include="..\Gtt.Links.Core\Gtt.Links.Core.csproj" PrivateAssets="All" />
+    <ProjectReference Include="..\Gtt.Links.Wiring\Gtt.Links.Wiring.csproj" PrivateAssets="All" ReferenceOutputAssembly="true" />
+  </ItemGroup>
+
+</Project>
