@@ -1,0 +1,71 @@
+name: .NET
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+# Temporarily switched the dotnet build command with directly calling msbuild as dotnet build is using older msbuild
+# which does not support source generators properly.
+# run: dotnet build --no-restore //DOT NET BUILD IS USING TOO OLD VERSION OF MSBUILD
+      
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v2
+    
+    - name: Setup .NET 5.0 for Source Generator
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.101
+        
+    - name: Setup .NET 3.X for Functions
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '3.1.x'
+    
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1.0.2
+    
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Build Debug
+      run: msbuild -target:build /p:configuration=Debug
+    
+    - name: Test Debug Build
+      run: dotnet test --no-build --verbosity normal
+      
+    - name: 'Build Functions'
+      shell: pwsh
+      run: |
+        pushd './Gtt.Links.Functions'
+        dotnet build --configuration Release --output ./output
+        popd
+      
+    - name: Deploy Azure Functions
+      uses: Azure/functions-action@v1
+      with:
+        app-name: gtt-links
+        package: 'Gtt.Links.Functions/output'
+        publish-profile: ${{ secrets.FUNC_DEPLOY_PROD }}
+    
+    - name: 'Build Client Nuget'
+      shell: pwsh
+      run: |
+        pushd './Gtt.Links.Client'
+        msbuild -target:build /p:configuration=Release
+        popd
+    
+    - name: Deploy Gtt.Links.Client Package Nuget.org
+      uses: brandedoutcast/publish-nuget@v2.5.5
+      with:
+        NUGET_KEY: ${{ secrets.NUGET_API_KEY }}
+        PROJECT_FILE_PATH: Gtt.Links.Client/Gtt.Links.Client.csproj
+        TAG_FORMAT: Gtt.Links.Client.*
+      
