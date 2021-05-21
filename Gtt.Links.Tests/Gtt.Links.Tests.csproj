@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Gtt.CodeWorks" Version="0.0.84" />
+    <PackageReference Include="Gtt.CodeWorks" Version="0.0.90" />
     <PackageReference Include="Gtt.CodeWorks.DataAnnotations" Version="0.0.70" />
     <PackageReference Include="Gtt.CodeWorks.Duplicator" Version="0.0.71" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.1" />

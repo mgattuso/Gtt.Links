@@ -5,7 +5,7 @@
     <UserSecretsId>cad96146-f485-47aa-9e98-cf3b0192d13d</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Gtt.CodeWorks" Version="0.0.84" />
+    <PackageReference Include="Gtt.CodeWorks" Version="0.0.90" />
     <PackageReference Include="Gtt.CodeWorks.DataAnnotations" Version="0.0.70" />
     <PackageReference Include="Gtt.CodeWorks.Functions.Host" Version="0.0.70" />
     <PackageReference Include="Gtt.CodeWorks.Serializers.TextJson" Version="0.0.71" />

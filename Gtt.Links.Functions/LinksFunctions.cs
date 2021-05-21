@@ -107,7 +107,6 @@ namespace Gtt.Links.Functions
                 Services = serviceInstance.Select(svc => new
                 {
                     Name = svc.Name,
-                    Action = svc.Action,
                     Request = new
                     {
                         Type = svc.RequestType.Name,

@@ -12,6 +12,8 @@ namespace Gtt.Links.Core.V1
     public class ShortLinkService : BaseStatefulServiceInstance<ShortLinkRequest, ShortLinkResponse, ShortLinkService.State, ShortLinkService.Trigger,
         ShortLinkService.Data>
     {
+        private readonly ShortCodeGeneratorService _shortCodeGeneratorService;
+
         public enum State
         {
             Pending,
@@ -31,28 +33,17 @@ namespace Gtt.Links.Core.V1
             public string OriginalUrl { get; set; }
         }
 
-        public ShortLinkService(CoreDependencies coreDependencies, StatefulDependencies statefulDependencies) : base(coreDependencies, statefulDependencies)
+        public ShortLinkService(
+            CoreDependencies coreDependencies,
+            StatefulDependencies statefulDependencies,
+            ShortCodeGeneratorService shortCodeGeneratorService) : base(coreDependencies, statefulDependencies)
         {
+            _shortCodeGeneratorService = shortCodeGeneratorService;
         }
 
         protected override IDictionary<int, string> DefineErrorCodes()
         {
             return NoErrorCodes();
-        }
-
-        protected override (Trigger Trigger, Func<ShortLinkRequest, string> Func)? DeriveIdentifier()
-        {
-            Random r = new Random(Guid.NewGuid().GetHashCode());
-            char[] letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".ToArray();
-
-            string code = "";
-            for (int i = 0; i < 4; i++)
-            {
-                var idx = r.Next(0, letters.Length);
-                code = code + letters[idx];
-            }
-
-            return (Trigger.Create, req => code);
         }
 
         protected override void Rules(StateMachine<State, Trigger> machine)
@@ -73,6 +64,21 @@ namespace Gtt.Links.Core.V1
             CurrentData.OriginalUrl = req.Url;
             CurrentData.OwnerEmailAddress = req.EmailAddress;
             return Task.CompletedTask;
+        }
+
+        protected override DerivedIdAction[] DeriveIdentifier()
+        {
+            return new[]
+            {
+                new DerivedIdAction(Trigger.Create, async (request, token) =>
+                {
+                    var cs = await _shortCodeGeneratorService.Execute(new ShortCodeGeneratorRequest
+                    {
+                        Length = 6
+                    }, token);
+                    return cs.Data.Code;
+                }),
+            };
         }
     }
 

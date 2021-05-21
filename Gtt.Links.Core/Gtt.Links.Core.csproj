@@ -5,9 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Gtt.CodeWorks" Version="0.0.84" />
+    <PackageReference Include="Gtt.CodeWorks" Version="0.0.90" />
     <PackageReference Include="Gtt.CodeWorks.DataAnnotations" Version="0.0.70" />
-    <PackageReference Include="Gtt.CodeWorks.StateMachines" Version="0.0.80" />
+    <PackageReference Include="Gtt.CodeWorks.StateMachines" Version="0.0.90" />
     <PackageReference Include="Stateless" Version="5.1.8" />
   </ItemGroup>
 

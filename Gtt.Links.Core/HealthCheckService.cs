@@ -27,8 +27,6 @@ namespace Gtt.Links.Core
         {
             return NoErrorCodes();
         }
-
-        public override ServiceAction Action { get; }
     }
 
     public class HealthCheckRequest : BaseRequest
