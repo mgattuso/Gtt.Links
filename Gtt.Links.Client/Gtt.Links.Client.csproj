@@ -5,7 +5,7 @@
     <lang>preview</lang>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
-    <Version>0.0.1</Version>
+    <Version>0.0.2</Version>
     <Authors>Michael Gattuso</Authors>
     <Company>gtt.me</Company>
     <Product>Gtt.Links.Client</Product>
@@ -15,12 +15,12 @@
     <RepositoryUrl>https://github.com/mgattuso/Gtt.Links.Core</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>0.0.1.0</AssemblyVersion>
+    <AssemblyVersion>0.0.2.0</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Gtt.CodeWorks" Version="0.0.90" />
-    <PackageReference Include="Gtt.CodeWorks.StateMachines" Version="0.0.90" />
+    <PackageReference Include="Gtt.CodeWorks.StateMachines" Version="0.0.91" />
     <PackageReference Include="Gtt.CodeWorks.Serializers.TextJson" Version="0.0.71" />
   </ItemGroup>
 

@@ -1,0 +1,46 @@
+### Request Schema
+POST {{host}}/api/meta:request:schema/V1/ShortLinkService
+Accept: application/json
+
+### Request Sample
+POST {{host}}/api/meta:request:example/V1/ShortLinkService
+Accept: application/json
+
+### State Diagram
+POST {{host}}/api/meta:state:diagram:view/V1/ShortLinkService
+Accept: application/json
+
+### Test Call
+POST {{host}}/api/call/V1/ShortLinkService
+Content-Type: application/json
+Accept: application/json
+
+{
+    "trigger": "Create",
+    "correlationId": "{{$guid}}",
+    "create": {
+        "url": "https://gtt.me",
+        "emailAddress": "m@gtt.me"
+    }
+}
+
+### Test GET
+POST {{host}}/api/call/V1/ShortLinkService
+Content-Type: application/json
+Accept: application/json
+
+{
+    "correlationId": "{{$guid}}",
+    "identifier": "HkmEbm"
+}
+
+### Test DELETE
+POST {{host}}/api/call/V1/ShortLinkService
+Content-Type: application/json
+Accept: application/json
+
+{
+    "correlationId": "{{$guid}}",
+    "identifier": "HkmEbm",
+    "trigger": "Delete"
+}

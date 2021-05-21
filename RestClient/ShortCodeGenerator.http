@@ -1,0 +1,17 @@
+### Sample
+POST {{host}}/api/meta:request:example/V1/ShortCodeGeneratorService
+Accept: application/json
+Content-Type: application/json
+
+### HappyPath
+POST {{host}}/api/call/V1/ShortCodeGeneratorService
+Accept: application/json
+Content-Type: application/json
+
+{
+    "length": 8,
+    "customLetterMap": "0123456789ABCDEF",
+    "debug": {
+        "randomSeed": 58
+    }
+}

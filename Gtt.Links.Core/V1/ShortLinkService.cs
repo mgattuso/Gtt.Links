@@ -74,7 +74,11 @@ namespace Gtt.Links.Core.V1
                 {
                     var cs = await _shortCodeGeneratorService.Execute(new ShortCodeGeneratorRequest
                     {
-                        Length = 6
+                        Length = 6,
+                        Debug = new ShortCodeGeneratorRequest.DebugData
+                        {
+                            RandomSeed = request?.Debug?.ShortCodeSeed
+                        }
                     }, token);
                     return cs.Data.Code;
                 }),
@@ -85,11 +89,17 @@ namespace Gtt.Links.Core.V1
     public class ShortLinkRequest : BaseStatefulRequest<ShortLinkService.Trigger>
     {
         public CreateData Create { get; set; }
+        public DebugData Debug { get; set; }
 
         public class CreateData
         {
             public string Url { get; set; }
             public string EmailAddress { get; set; }
+        }
+
+        public class DebugData
+        {
+            public int? ShortCodeSeed { get; set; }
         }
     }
 
